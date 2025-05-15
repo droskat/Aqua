@@ -18,8 +18,8 @@ declare module "next-auth" {
 const handler = NextAuth({
   providers: [
     GoogleProvider({
-      clientId: "493176827395-de49aevk11uuseti2d0vffoga6gm6536.apps.googleusercontent.com",
-      clientSecret: "iUcGJfJvKsgeSPCD45bw4VCM",
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
   callbacks: {

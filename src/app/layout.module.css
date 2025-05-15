@@ -1,4 +1,4 @@
-body {
+.mainbody {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -6,7 +6,7 @@ body {
   color: #333;
 }
 
-footer {
+.mainfooter {
   text-align: center;
   padding: 20px;
   background-color: #222;
@@ -14,6 +14,6 @@ footer {
   font-size: 14px;
 }
 
-footer p {
+.mainfooter p {
   margin: 0;
 }
