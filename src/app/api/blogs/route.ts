@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../../../generated/client/client.js";
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
@@ -11,9 +11,16 @@ export const prisma =
 
 if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
 
-export async function GET() {
+export async function GET(req: Request) {
   try {
-    const blogs = await prisma.blog.findMany();
+const url = new URL(req.url);
+const page = parseInt(url.searchParams.get("page") || "1");
+const limit = parseInt(url.searchParams.get("limit") || "10");
+const skip = (page - 1) * limit;
+    const blogs = await prisma.blog.findMany({
+  skip,
+  take: limit,
+});
     return NextResponse.json(blogs);
   } catch (error) {
     console.error("Error fetching blogs:", error);

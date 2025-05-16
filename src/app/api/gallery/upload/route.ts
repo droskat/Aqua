@@ -1,10 +1,16 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../../../../generated/client/client.js";
 import { v4 as uuidv4 } from "uuid";
 import path from "path";
 import fs from "fs/promises";
 
-const prisma = new PrismaClient();
+const globalForPrisma = global as unknown as { prisma: PrismaClient };
+
+export const prisma =
+  globalForPrisma.prisma ||
+  new PrismaClient({
+    log: ["query"],
+  });
 const UPLOAD_DIR = path.join(process.cwd(), "public/uploads");
 
 export async function POST(req: Request) {

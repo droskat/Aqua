@@ -1,9 +1,17 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../../../../generated/client/client.js";
 import { Session } from "next-auth";
+import { randomUUID } from "crypto";
 
-const prisma = new PrismaClient();
+const globalForPrisma = global as unknown as { prisma: PrismaClient };
+
+export const prisma =
+  globalForPrisma.prisma ||
+  new PrismaClient({
+    log: ["query"],
+  });
+
 declare module "next-auth" {
   interface Session {
     user: {
@@ -34,8 +42,9 @@ const handler = NextAuth({
             data: {
               name: user.name,
               email: user.email!,
-              provider: account.provider,
-              providerAccountId: account.providerAccountId,
+              password : randomUUID()
+              // provider: account.provider,
+              // providerAccountId: account.providerAccountId,
             },
           });
         }

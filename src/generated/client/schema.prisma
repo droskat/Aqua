@@ -19,20 +19,14 @@ model User {
 }
 
 model Blog {
-  id       Int       @id @default(autoincrement())
-  title    String
-  content  String
-  author   User      @relation(fields: [authorId], references: [id])
-  authorId Int
-  comments Comment[]
-  upvotes  Int       @default(0)
-}
-
-model Comment {
-  id      Int    @id @default(autoincrement())
-  content String
-  blog    Blog   @relation(fields: [blogId], references: [id])
-  blogId  Int
+  id              Int       @id @default(autoincrement())
+  title           String
+  content         String
+  author          User      @relation(fields: [authorId], references: [id])
+  authorId        Int
+  comments        Comment[]
+  upvotes         Int       @default(0)
+  upvotesRelation Upvote[]
 }
 
 model Image {
@@ -40,6 +34,21 @@ model Image {
   url String
 }
 
-model New {
-  id Int @id @default(autoincrement())
+model Upvote {
+  id     Int  @id @default(autoincrement())
+  blogId Int
+  userId Int
+  Blog   Blog @relation(fields: [blogId], references: [id])
+
+  @@unique([blogId, userId])
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  upvotes   Int      @default(0)
+  downvotes Int      @default(0)
+  blogId    Int
+  blog      Blog     @relation(fields: [blogId], references: [id])
+  createdAt DateTime @default(now())
 }

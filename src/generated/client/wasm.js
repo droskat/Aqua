@@ -20,11 +20,11 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.8.0-dev.49
+ * Prisma Client JS version: 6.8.1
  * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
  */
 Prisma.prismaVersion = {
-  client: "6.8.0-dev.49",
+  client: "6.8.1",
   engine: "2060c79ba17c6bb9f5823312b6f6b7f4a845738e"
 }
 
@@ -134,19 +134,24 @@ exports.Prisma.BlogScalarFieldEnum = {
   upvotes: 'upvotes'
 };
 
-exports.Prisma.CommentScalarFieldEnum = {
-  id: 'id',
-  content: 'content',
-  blogId: 'blogId'
-};
-
 exports.Prisma.ImageScalarFieldEnum = {
   id: 'id',
   url: 'url'
 };
 
-exports.Prisma.NewScalarFieldEnum = {
-  id: 'id'
+exports.Prisma.UpvoteScalarFieldEnum = {
+  id: 'id',
+  blogId: 'blogId',
+  userId: 'userId'
+};
+
+exports.Prisma.CommentScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  upvotes: 'upvotes',
+  downvotes: 'downvotes',
+  blogId: 'blogId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -163,9 +168,9 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   User: 'User',
   Blog: 'Blog',
-  Comment: 'Comment',
   Image: 'Image',
-  New: 'New'
+  Upvote: 'Upvote',
+  Comment: 'Comment'
 };
 
 /**
