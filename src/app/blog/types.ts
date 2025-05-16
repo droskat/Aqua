@@ -12,4 +12,5 @@ export interface BlogType {
   content: string;
   authorId: number;
   upvotes: number;
+  upvotedBy: string[];
 }

@@ -1,7 +1,7 @@
+import { NextResponse } from "next/server";
 import { PrismaClient } from "../../../generated/client/client.js";
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
-
 export const prisma =
   globalForPrisma.prisma ||
   new PrismaClient({
@@ -9,6 +9,27 @@ export const prisma =
   });
 
 if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const blogId = Number(searchParams.get("blogId"));
+  const userId = Number(searchParams.get("userId"));
+
+  if (isNaN(blogId) || isNaN(userId)) {
+    return NextResponse.json({ error: "Invalid blogId or userId" }, { status: 400 });
+  }
+
+  const upvote = await prisma.upvote.findUnique({
+    where: {
+      blogId_userId: {
+        blogId,
+        userId,
+      },
+    },
+  });
+
+  return NextResponse.json({ hasUpvoted: !!upvote });
+}
 
 export async function POST(req: Request) {
   const { blogId, userId } = await req.json();

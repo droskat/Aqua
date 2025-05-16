@@ -1,10 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default function UploadImage() {
+export default function UploadPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const [image, setImage] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    if (status === "loading") return; // Wait for session to load
+    if (!session) {
+      router.replace("/gallery");
+    }
+  }, [session, status, router]);
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,9 +45,13 @@ export default function UploadImage() {
     }
   };
 
+  if (!session) {
+    return null; // Optionally, show a loading spinner here
+  }
+
   return (
     <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
-      <h1>Upload Image</h1>
+      <h1>Upload your image</h1>
       <form onSubmit={handleUpload}>
         <input
           type="file"

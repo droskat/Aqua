@@ -24,17 +24,71 @@ export async function POST(req: Request) {
 }
 
 export async function PATCH(req: Request) {
-  const { commentId, action } = await req.json();
+  const { commentId, action, userId } = await req.json();
 
-  const updatedComment = await prisma.comment.update({
-    where: { id: commentId },
-    data: {
-      upvotes: action === "upvote" ? { increment: 1 } : undefined,
-      downvotes: action === "downvote" ? { increment: 1 } : undefined,
-    },
-  });
+  if (action === "upvote") {
+    // Remove any existing downvote by this user and decrement downvotes if needed
+    const downvote = await prisma.commentDownvote.findUnique({
+      where: { commentId_userId: { commentId, userId } },
+    });
+    if (downvote) {
+      await prisma.commentDownvote.delete({
+        where: { commentId_userId: { commentId, userId } },
+      });
+      await prisma.comment.update({
+        where: { id: commentId },
+        data: { downvotes: { decrement: 1 } },
+      });
+    }
 
-  return new Response(JSON.stringify(updatedComment));
+    const existing = await prisma.commentUpvote.findUnique({
+      where: { commentId_userId: { commentId, userId } },
+    });
+    if (existing) {
+      const updatedComment = await prisma.comment.findUnique({ where: { id: commentId } });
+      return new Response(JSON.stringify(updatedComment), { status: 200 });
+    }
+    await prisma.commentUpvote.create({
+      data: { commentId, userId },
+    });
+    const updatedComment = await prisma.comment.update({
+      where: { id: commentId },
+      data: { upvotes: { increment: 1 } },
+    });
+    return new Response(JSON.stringify(updatedComment));
+  }
+
+  if (action === "downvote") {
+    // Remove any existing upvote by this user and decrement upvotes if needed
+    const upvote = await prisma.commentUpvote.findUnique({
+      where: { commentId_userId: { commentId, userId } },
+    });
+    if (upvote) {
+      await prisma.commentUpvote.delete({
+        where: { commentId_userId: { commentId, userId } },
+      });
+      await prisma.comment.update({
+        where: { id: commentId },
+        data: { upvotes: { decrement: 1 } },
+      });
+    }
+
+    const existing = await prisma.commentDownvote.findUnique({
+      where: { commentId_userId: { commentId, userId } },
+    });
+    if (existing) {
+      const updatedComment = await prisma.comment.findUnique({ where: { id: commentId } });
+      return new Response(JSON.stringify(updatedComment), { status: 200 });
+    }
+    await prisma.commentDownvote.create({
+      data: { commentId, userId },
+    });
+    const updatedComment = await prisma.comment.update({
+      where: { id: commentId },
+      data: { downvotes: { increment: 1 } },
+    });
+    return new Response(JSON.stringify(updatedComment));
+  }
 }
 
 export async function GET(req: Request) {

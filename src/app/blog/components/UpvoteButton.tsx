@@ -1,26 +1,38 @@
+import React from "react";
+
 interface UpvoteButtonProps {
   blogId: number;
   upvotes: number;
   upvoted: boolean;
   onToggle: (blogId: number) => void;
+  isLoggedIn: boolean;
 }
 
-export default function UpvoteButton({ blogId, upvotes, upvoted, onToggle }: UpvoteButtonProps) {
+export default function UpvoteButton({
+  blogId,
+  upvotes,
+  upvoted,
+  onToggle,
+  isLoggedIn,
+}: UpvoteButtonProps) {
   return (
     <div>
-      <p>Upvotes: {upvotes}</p>
       <button
         onClick={() => onToggle(blogId)}
+        disabled={!isLoggedIn}
         style={{
-          backgroundColor: upvoted ? "green" : "gray",
-          color: "white",
-          padding: "8px 16px",
+          background: upvoted ? "#4caf50" : "#eee",
+          color: upvoted ? "#fff" : "#333",
           border: "none",
           borderRadius: "4px",
-          cursor: "pointer",
+          padding: "8px 16px",
+          cursor: isLoggedIn ? "pointer" : "not-allowed",
+          marginRight: "8px",
+          fontWeight: upvoted ? "bold" : "normal",
+          transition: "background 0.2s, color 0.2s",
         }}
       >
-        {upvoted ? "Remove Upvote" : "Upvote"}
+        {upvoted ? "Upvoted" : "Upvote"} {upvotes}
       </button>
     </div>
   );

@@ -154,6 +154,18 @@ exports.Prisma.CommentScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.CommentUpvoteScalarFieldEnum = {
+  id: 'id',
+  commentId: 'commentId',
+  userId: 'userId'
+};
+
+exports.Prisma.CommentDownvoteScalarFieldEnum = {
+  id: 'id',
+  commentId: 'commentId',
+  userId: 'userId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -170,7 +182,9 @@ exports.Prisma.ModelName = {
   Blog: 'Blog',
   Image: 'Image',
   Upvote: 'Upvote',
-  Comment: 'Comment'
+  Comment: 'Comment',
+  CommentUpvote: 'CommentUpvote',
+  CommentDownvote: 'CommentDownvote'
 };
 
 /**

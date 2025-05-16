@@ -38,6 +38,16 @@ export type Upvote = $Result.DefaultSelection<Prisma.$UpvotePayload>
  * 
  */
 export type Comment = $Result.DefaultSelection<Prisma.$CommentPayload>
+/**
+ * Model CommentUpvote
+ * 
+ */
+export type CommentUpvote = $Result.DefaultSelection<Prisma.$CommentUpvotePayload>
+/**
+ * Model CommentDownvote
+ * 
+ */
+export type CommentDownvote = $Result.DefaultSelection<Prisma.$CommentDownvotePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -213,6 +223,26 @@ export class PrismaClient<
     * ```
     */
   get comment(): Prisma.CommentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.commentUpvote`: Exposes CRUD operations for the **CommentUpvote** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CommentUpvotes
+    * const commentUpvotes = await prisma.commentUpvote.findMany()
+    * ```
+    */
+  get commentUpvote(): Prisma.CommentUpvoteDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.commentDownvote`: Exposes CRUD operations for the **CommentDownvote** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CommentDownvotes
+    * const commentDownvotes = await prisma.commentDownvote.findMany()
+    * ```
+    */
+  get commentDownvote(): Prisma.CommentDownvoteDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -657,7 +687,9 @@ export namespace Prisma {
     Blog: 'Blog',
     Image: 'Image',
     Upvote: 'Upvote',
-    Comment: 'Comment'
+    Comment: 'Comment',
+    CommentUpvote: 'CommentUpvote',
+    CommentDownvote: 'CommentDownvote'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -676,7 +708,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "blog" | "image" | "upvote" | "comment"
+      modelProps: "user" | "blog" | "image" | "upvote" | "comment" | "commentUpvote" | "commentDownvote"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1050,6 +1082,154 @@ export namespace Prisma {
           }
         }
       }
+      CommentUpvote: {
+        payload: Prisma.$CommentUpvotePayload<ExtArgs>
+        fields: Prisma.CommentUpvoteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CommentUpvoteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentUpvotePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CommentUpvoteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentUpvotePayload>
+          }
+          findFirst: {
+            args: Prisma.CommentUpvoteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentUpvotePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CommentUpvoteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentUpvotePayload>
+          }
+          findMany: {
+            args: Prisma.CommentUpvoteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentUpvotePayload>[]
+          }
+          create: {
+            args: Prisma.CommentUpvoteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentUpvotePayload>
+          }
+          createMany: {
+            args: Prisma.CommentUpvoteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CommentUpvoteCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentUpvotePayload>[]
+          }
+          delete: {
+            args: Prisma.CommentUpvoteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentUpvotePayload>
+          }
+          update: {
+            args: Prisma.CommentUpvoteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentUpvotePayload>
+          }
+          deleteMany: {
+            args: Prisma.CommentUpvoteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CommentUpvoteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CommentUpvoteUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentUpvotePayload>[]
+          }
+          upsert: {
+            args: Prisma.CommentUpvoteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentUpvotePayload>
+          }
+          aggregate: {
+            args: Prisma.CommentUpvoteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCommentUpvote>
+          }
+          groupBy: {
+            args: Prisma.CommentUpvoteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CommentUpvoteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CommentUpvoteCountArgs<ExtArgs>
+            result: $Utils.Optional<CommentUpvoteCountAggregateOutputType> | number
+          }
+        }
+      }
+      CommentDownvote: {
+        payload: Prisma.$CommentDownvotePayload<ExtArgs>
+        fields: Prisma.CommentDownvoteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CommentDownvoteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentDownvotePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CommentDownvoteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentDownvotePayload>
+          }
+          findFirst: {
+            args: Prisma.CommentDownvoteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentDownvotePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CommentDownvoteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentDownvotePayload>
+          }
+          findMany: {
+            args: Prisma.CommentDownvoteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentDownvotePayload>[]
+          }
+          create: {
+            args: Prisma.CommentDownvoteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentDownvotePayload>
+          }
+          createMany: {
+            args: Prisma.CommentDownvoteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CommentDownvoteCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentDownvotePayload>[]
+          }
+          delete: {
+            args: Prisma.CommentDownvoteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentDownvotePayload>
+          }
+          update: {
+            args: Prisma.CommentDownvoteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentDownvotePayload>
+          }
+          deleteMany: {
+            args: Prisma.CommentDownvoteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CommentDownvoteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CommentDownvoteUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentDownvotePayload>[]
+          }
+          upsert: {
+            args: Prisma.CommentDownvoteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentDownvotePayload>
+          }
+          aggregate: {
+            args: Prisma.CommentDownvoteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCommentDownvote>
+          }
+          groupBy: {
+            args: Prisma.CommentDownvoteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CommentDownvoteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CommentDownvoteCountArgs<ExtArgs>
+            result: $Utils.Optional<CommentDownvoteCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1139,6 +1319,8 @@ export namespace Prisma {
     image?: ImageOmit
     upvote?: UpvoteOmit
     comment?: CommentOmit
+    commentUpvote?: CommentUpvoteOmit
+    commentDownvote?: CommentDownvoteOmit
   }
 
   /* Types for Logging */
@@ -6750,6 +6932,2024 @@ export namespace Prisma {
 
 
   /**
+   * Model CommentUpvote
+   */
+
+  export type AggregateCommentUpvote = {
+    _count: CommentUpvoteCountAggregateOutputType | null
+    _avg: CommentUpvoteAvgAggregateOutputType | null
+    _sum: CommentUpvoteSumAggregateOutputType | null
+    _min: CommentUpvoteMinAggregateOutputType | null
+    _max: CommentUpvoteMaxAggregateOutputType | null
+  }
+
+  export type CommentUpvoteAvgAggregateOutputType = {
+    id: number | null
+    commentId: number | null
+    userId: number | null
+  }
+
+  export type CommentUpvoteSumAggregateOutputType = {
+    id: number | null
+    commentId: number | null
+    userId: number | null
+  }
+
+  export type CommentUpvoteMinAggregateOutputType = {
+    id: number | null
+    commentId: number | null
+    userId: number | null
+  }
+
+  export type CommentUpvoteMaxAggregateOutputType = {
+    id: number | null
+    commentId: number | null
+    userId: number | null
+  }
+
+  export type CommentUpvoteCountAggregateOutputType = {
+    id: number
+    commentId: number
+    userId: number
+    _all: number
+  }
+
+
+  export type CommentUpvoteAvgAggregateInputType = {
+    id?: true
+    commentId?: true
+    userId?: true
+  }
+
+  export type CommentUpvoteSumAggregateInputType = {
+    id?: true
+    commentId?: true
+    userId?: true
+  }
+
+  export type CommentUpvoteMinAggregateInputType = {
+    id?: true
+    commentId?: true
+    userId?: true
+  }
+
+  export type CommentUpvoteMaxAggregateInputType = {
+    id?: true
+    commentId?: true
+    userId?: true
+  }
+
+  export type CommentUpvoteCountAggregateInputType = {
+    id?: true
+    commentId?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type CommentUpvoteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CommentUpvote to aggregate.
+     */
+    where?: CommentUpvoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommentUpvotes to fetch.
+     */
+    orderBy?: CommentUpvoteOrderByWithRelationInput | CommentUpvoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CommentUpvoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommentUpvotes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommentUpvotes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CommentUpvotes
+    **/
+    _count?: true | CommentUpvoteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CommentUpvoteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CommentUpvoteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CommentUpvoteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CommentUpvoteMaxAggregateInputType
+  }
+
+  export type GetCommentUpvoteAggregateType<T extends CommentUpvoteAggregateArgs> = {
+        [P in keyof T & keyof AggregateCommentUpvote]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCommentUpvote[P]>
+      : GetScalarType<T[P], AggregateCommentUpvote[P]>
+  }
+
+
+
+
+  export type CommentUpvoteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentUpvoteWhereInput
+    orderBy?: CommentUpvoteOrderByWithAggregationInput | CommentUpvoteOrderByWithAggregationInput[]
+    by: CommentUpvoteScalarFieldEnum[] | CommentUpvoteScalarFieldEnum
+    having?: CommentUpvoteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CommentUpvoteCountAggregateInputType | true
+    _avg?: CommentUpvoteAvgAggregateInputType
+    _sum?: CommentUpvoteSumAggregateInputType
+    _min?: CommentUpvoteMinAggregateInputType
+    _max?: CommentUpvoteMaxAggregateInputType
+  }
+
+  export type CommentUpvoteGroupByOutputType = {
+    id: number
+    commentId: number
+    userId: number
+    _count: CommentUpvoteCountAggregateOutputType | null
+    _avg: CommentUpvoteAvgAggregateOutputType | null
+    _sum: CommentUpvoteSumAggregateOutputType | null
+    _min: CommentUpvoteMinAggregateOutputType | null
+    _max: CommentUpvoteMaxAggregateOutputType | null
+  }
+
+  type GetCommentUpvoteGroupByPayload<T extends CommentUpvoteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CommentUpvoteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CommentUpvoteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CommentUpvoteGroupByOutputType[P]>
+            : GetScalarType<T[P], CommentUpvoteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CommentUpvoteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    commentId?: boolean
+    userId?: boolean
+  }, ExtArgs["result"]["commentUpvote"]>
+
+  export type CommentUpvoteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    commentId?: boolean
+    userId?: boolean
+  }, ExtArgs["result"]["commentUpvote"]>
+
+  export type CommentUpvoteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    commentId?: boolean
+    userId?: boolean
+  }, ExtArgs["result"]["commentUpvote"]>
+
+  export type CommentUpvoteSelectScalar = {
+    id?: boolean
+    commentId?: boolean
+    userId?: boolean
+  }
+
+  export type CommentUpvoteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "commentId" | "userId", ExtArgs["result"]["commentUpvote"]>
+
+  export type $CommentUpvotePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CommentUpvote"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      commentId: number
+      userId: number
+    }, ExtArgs["result"]["commentUpvote"]>
+    composites: {}
+  }
+
+  type CommentUpvoteGetPayload<S extends boolean | null | undefined | CommentUpvoteDefaultArgs> = $Result.GetResult<Prisma.$CommentUpvotePayload, S>
+
+  type CommentUpvoteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CommentUpvoteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CommentUpvoteCountAggregateInputType | true
+    }
+
+  export interface CommentUpvoteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CommentUpvote'], meta: { name: 'CommentUpvote' } }
+    /**
+     * Find zero or one CommentUpvote that matches the filter.
+     * @param {CommentUpvoteFindUniqueArgs} args - Arguments to find a CommentUpvote
+     * @example
+     * // Get one CommentUpvote
+     * const commentUpvote = await prisma.commentUpvote.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CommentUpvoteFindUniqueArgs>(args: SelectSubset<T, CommentUpvoteFindUniqueArgs<ExtArgs>>): Prisma__CommentUpvoteClient<$Result.GetResult<Prisma.$CommentUpvotePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CommentUpvote that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CommentUpvoteFindUniqueOrThrowArgs} args - Arguments to find a CommentUpvote
+     * @example
+     * // Get one CommentUpvote
+     * const commentUpvote = await prisma.commentUpvote.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CommentUpvoteFindUniqueOrThrowArgs>(args: SelectSubset<T, CommentUpvoteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CommentUpvoteClient<$Result.GetResult<Prisma.$CommentUpvotePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CommentUpvote that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentUpvoteFindFirstArgs} args - Arguments to find a CommentUpvote
+     * @example
+     * // Get one CommentUpvote
+     * const commentUpvote = await prisma.commentUpvote.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CommentUpvoteFindFirstArgs>(args?: SelectSubset<T, CommentUpvoteFindFirstArgs<ExtArgs>>): Prisma__CommentUpvoteClient<$Result.GetResult<Prisma.$CommentUpvotePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CommentUpvote that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentUpvoteFindFirstOrThrowArgs} args - Arguments to find a CommentUpvote
+     * @example
+     * // Get one CommentUpvote
+     * const commentUpvote = await prisma.commentUpvote.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CommentUpvoteFindFirstOrThrowArgs>(args?: SelectSubset<T, CommentUpvoteFindFirstOrThrowArgs<ExtArgs>>): Prisma__CommentUpvoteClient<$Result.GetResult<Prisma.$CommentUpvotePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CommentUpvotes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentUpvoteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CommentUpvotes
+     * const commentUpvotes = await prisma.commentUpvote.findMany()
+     * 
+     * // Get first 10 CommentUpvotes
+     * const commentUpvotes = await prisma.commentUpvote.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const commentUpvoteWithIdOnly = await prisma.commentUpvote.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CommentUpvoteFindManyArgs>(args?: SelectSubset<T, CommentUpvoteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentUpvotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CommentUpvote.
+     * @param {CommentUpvoteCreateArgs} args - Arguments to create a CommentUpvote.
+     * @example
+     * // Create one CommentUpvote
+     * const CommentUpvote = await prisma.commentUpvote.create({
+     *   data: {
+     *     // ... data to create a CommentUpvote
+     *   }
+     * })
+     * 
+     */
+    create<T extends CommentUpvoteCreateArgs>(args: SelectSubset<T, CommentUpvoteCreateArgs<ExtArgs>>): Prisma__CommentUpvoteClient<$Result.GetResult<Prisma.$CommentUpvotePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CommentUpvotes.
+     * @param {CommentUpvoteCreateManyArgs} args - Arguments to create many CommentUpvotes.
+     * @example
+     * // Create many CommentUpvotes
+     * const commentUpvote = await prisma.commentUpvote.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CommentUpvoteCreateManyArgs>(args?: SelectSubset<T, CommentUpvoteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CommentUpvotes and returns the data saved in the database.
+     * @param {CommentUpvoteCreateManyAndReturnArgs} args - Arguments to create many CommentUpvotes.
+     * @example
+     * // Create many CommentUpvotes
+     * const commentUpvote = await prisma.commentUpvote.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CommentUpvotes and only return the `id`
+     * const commentUpvoteWithIdOnly = await prisma.commentUpvote.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CommentUpvoteCreateManyAndReturnArgs>(args?: SelectSubset<T, CommentUpvoteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentUpvotePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CommentUpvote.
+     * @param {CommentUpvoteDeleteArgs} args - Arguments to delete one CommentUpvote.
+     * @example
+     * // Delete one CommentUpvote
+     * const CommentUpvote = await prisma.commentUpvote.delete({
+     *   where: {
+     *     // ... filter to delete one CommentUpvote
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CommentUpvoteDeleteArgs>(args: SelectSubset<T, CommentUpvoteDeleteArgs<ExtArgs>>): Prisma__CommentUpvoteClient<$Result.GetResult<Prisma.$CommentUpvotePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CommentUpvote.
+     * @param {CommentUpvoteUpdateArgs} args - Arguments to update one CommentUpvote.
+     * @example
+     * // Update one CommentUpvote
+     * const commentUpvote = await prisma.commentUpvote.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CommentUpvoteUpdateArgs>(args: SelectSubset<T, CommentUpvoteUpdateArgs<ExtArgs>>): Prisma__CommentUpvoteClient<$Result.GetResult<Prisma.$CommentUpvotePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CommentUpvotes.
+     * @param {CommentUpvoteDeleteManyArgs} args - Arguments to filter CommentUpvotes to delete.
+     * @example
+     * // Delete a few CommentUpvotes
+     * const { count } = await prisma.commentUpvote.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CommentUpvoteDeleteManyArgs>(args?: SelectSubset<T, CommentUpvoteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CommentUpvotes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentUpvoteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CommentUpvotes
+     * const commentUpvote = await prisma.commentUpvote.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CommentUpvoteUpdateManyArgs>(args: SelectSubset<T, CommentUpvoteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CommentUpvotes and returns the data updated in the database.
+     * @param {CommentUpvoteUpdateManyAndReturnArgs} args - Arguments to update many CommentUpvotes.
+     * @example
+     * // Update many CommentUpvotes
+     * const commentUpvote = await prisma.commentUpvote.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CommentUpvotes and only return the `id`
+     * const commentUpvoteWithIdOnly = await prisma.commentUpvote.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CommentUpvoteUpdateManyAndReturnArgs>(args: SelectSubset<T, CommentUpvoteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentUpvotePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CommentUpvote.
+     * @param {CommentUpvoteUpsertArgs} args - Arguments to update or create a CommentUpvote.
+     * @example
+     * // Update or create a CommentUpvote
+     * const commentUpvote = await prisma.commentUpvote.upsert({
+     *   create: {
+     *     // ... data to create a CommentUpvote
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CommentUpvote we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CommentUpvoteUpsertArgs>(args: SelectSubset<T, CommentUpvoteUpsertArgs<ExtArgs>>): Prisma__CommentUpvoteClient<$Result.GetResult<Prisma.$CommentUpvotePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CommentUpvotes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentUpvoteCountArgs} args - Arguments to filter CommentUpvotes to count.
+     * @example
+     * // Count the number of CommentUpvotes
+     * const count = await prisma.commentUpvote.count({
+     *   where: {
+     *     // ... the filter for the CommentUpvotes we want to count
+     *   }
+     * })
+    **/
+    count<T extends CommentUpvoteCountArgs>(
+      args?: Subset<T, CommentUpvoteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CommentUpvoteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CommentUpvote.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentUpvoteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CommentUpvoteAggregateArgs>(args: Subset<T, CommentUpvoteAggregateArgs>): Prisma.PrismaPromise<GetCommentUpvoteAggregateType<T>>
+
+    /**
+     * Group by CommentUpvote.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentUpvoteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CommentUpvoteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CommentUpvoteGroupByArgs['orderBy'] }
+        : { orderBy?: CommentUpvoteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CommentUpvoteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommentUpvoteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CommentUpvote model
+   */
+  readonly fields: CommentUpvoteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CommentUpvote.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CommentUpvoteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CommentUpvote model
+   */
+  interface CommentUpvoteFieldRefs {
+    readonly id: FieldRef<"CommentUpvote", 'Int'>
+    readonly commentId: FieldRef<"CommentUpvote", 'Int'>
+    readonly userId: FieldRef<"CommentUpvote", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CommentUpvote findUnique
+   */
+  export type CommentUpvoteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentUpvote
+     */
+    select?: CommentUpvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentUpvote
+     */
+    omit?: CommentUpvoteOmit<ExtArgs> | null
+    /**
+     * Filter, which CommentUpvote to fetch.
+     */
+    where: CommentUpvoteWhereUniqueInput
+  }
+
+  /**
+   * CommentUpvote findUniqueOrThrow
+   */
+  export type CommentUpvoteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentUpvote
+     */
+    select?: CommentUpvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentUpvote
+     */
+    omit?: CommentUpvoteOmit<ExtArgs> | null
+    /**
+     * Filter, which CommentUpvote to fetch.
+     */
+    where: CommentUpvoteWhereUniqueInput
+  }
+
+  /**
+   * CommentUpvote findFirst
+   */
+  export type CommentUpvoteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentUpvote
+     */
+    select?: CommentUpvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentUpvote
+     */
+    omit?: CommentUpvoteOmit<ExtArgs> | null
+    /**
+     * Filter, which CommentUpvote to fetch.
+     */
+    where?: CommentUpvoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommentUpvotes to fetch.
+     */
+    orderBy?: CommentUpvoteOrderByWithRelationInput | CommentUpvoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CommentUpvotes.
+     */
+    cursor?: CommentUpvoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommentUpvotes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommentUpvotes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CommentUpvotes.
+     */
+    distinct?: CommentUpvoteScalarFieldEnum | CommentUpvoteScalarFieldEnum[]
+  }
+
+  /**
+   * CommentUpvote findFirstOrThrow
+   */
+  export type CommentUpvoteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentUpvote
+     */
+    select?: CommentUpvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentUpvote
+     */
+    omit?: CommentUpvoteOmit<ExtArgs> | null
+    /**
+     * Filter, which CommentUpvote to fetch.
+     */
+    where?: CommentUpvoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommentUpvotes to fetch.
+     */
+    orderBy?: CommentUpvoteOrderByWithRelationInput | CommentUpvoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CommentUpvotes.
+     */
+    cursor?: CommentUpvoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommentUpvotes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommentUpvotes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CommentUpvotes.
+     */
+    distinct?: CommentUpvoteScalarFieldEnum | CommentUpvoteScalarFieldEnum[]
+  }
+
+  /**
+   * CommentUpvote findMany
+   */
+  export type CommentUpvoteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentUpvote
+     */
+    select?: CommentUpvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentUpvote
+     */
+    omit?: CommentUpvoteOmit<ExtArgs> | null
+    /**
+     * Filter, which CommentUpvotes to fetch.
+     */
+    where?: CommentUpvoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommentUpvotes to fetch.
+     */
+    orderBy?: CommentUpvoteOrderByWithRelationInput | CommentUpvoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CommentUpvotes.
+     */
+    cursor?: CommentUpvoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommentUpvotes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommentUpvotes.
+     */
+    skip?: number
+    distinct?: CommentUpvoteScalarFieldEnum | CommentUpvoteScalarFieldEnum[]
+  }
+
+  /**
+   * CommentUpvote create
+   */
+  export type CommentUpvoteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentUpvote
+     */
+    select?: CommentUpvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentUpvote
+     */
+    omit?: CommentUpvoteOmit<ExtArgs> | null
+    /**
+     * The data needed to create a CommentUpvote.
+     */
+    data: XOR<CommentUpvoteCreateInput, CommentUpvoteUncheckedCreateInput>
+  }
+
+  /**
+   * CommentUpvote createMany
+   */
+  export type CommentUpvoteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CommentUpvotes.
+     */
+    data: CommentUpvoteCreateManyInput | CommentUpvoteCreateManyInput[]
+  }
+
+  /**
+   * CommentUpvote createManyAndReturn
+   */
+  export type CommentUpvoteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentUpvote
+     */
+    select?: CommentUpvoteSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentUpvote
+     */
+    omit?: CommentUpvoteOmit<ExtArgs> | null
+    /**
+     * The data used to create many CommentUpvotes.
+     */
+    data: CommentUpvoteCreateManyInput | CommentUpvoteCreateManyInput[]
+  }
+
+  /**
+   * CommentUpvote update
+   */
+  export type CommentUpvoteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentUpvote
+     */
+    select?: CommentUpvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentUpvote
+     */
+    omit?: CommentUpvoteOmit<ExtArgs> | null
+    /**
+     * The data needed to update a CommentUpvote.
+     */
+    data: XOR<CommentUpvoteUpdateInput, CommentUpvoteUncheckedUpdateInput>
+    /**
+     * Choose, which CommentUpvote to update.
+     */
+    where: CommentUpvoteWhereUniqueInput
+  }
+
+  /**
+   * CommentUpvote updateMany
+   */
+  export type CommentUpvoteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CommentUpvotes.
+     */
+    data: XOR<CommentUpvoteUpdateManyMutationInput, CommentUpvoteUncheckedUpdateManyInput>
+    /**
+     * Filter which CommentUpvotes to update
+     */
+    where?: CommentUpvoteWhereInput
+    /**
+     * Limit how many CommentUpvotes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CommentUpvote updateManyAndReturn
+   */
+  export type CommentUpvoteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentUpvote
+     */
+    select?: CommentUpvoteSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentUpvote
+     */
+    omit?: CommentUpvoteOmit<ExtArgs> | null
+    /**
+     * The data used to update CommentUpvotes.
+     */
+    data: XOR<CommentUpvoteUpdateManyMutationInput, CommentUpvoteUncheckedUpdateManyInput>
+    /**
+     * Filter which CommentUpvotes to update
+     */
+    where?: CommentUpvoteWhereInput
+    /**
+     * Limit how many CommentUpvotes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CommentUpvote upsert
+   */
+  export type CommentUpvoteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentUpvote
+     */
+    select?: CommentUpvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentUpvote
+     */
+    omit?: CommentUpvoteOmit<ExtArgs> | null
+    /**
+     * The filter to search for the CommentUpvote to update in case it exists.
+     */
+    where: CommentUpvoteWhereUniqueInput
+    /**
+     * In case the CommentUpvote found by the `where` argument doesn't exist, create a new CommentUpvote with this data.
+     */
+    create: XOR<CommentUpvoteCreateInput, CommentUpvoteUncheckedCreateInput>
+    /**
+     * In case the CommentUpvote was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CommentUpvoteUpdateInput, CommentUpvoteUncheckedUpdateInput>
+  }
+
+  /**
+   * CommentUpvote delete
+   */
+  export type CommentUpvoteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentUpvote
+     */
+    select?: CommentUpvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentUpvote
+     */
+    omit?: CommentUpvoteOmit<ExtArgs> | null
+    /**
+     * Filter which CommentUpvote to delete.
+     */
+    where: CommentUpvoteWhereUniqueInput
+  }
+
+  /**
+   * CommentUpvote deleteMany
+   */
+  export type CommentUpvoteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CommentUpvotes to delete
+     */
+    where?: CommentUpvoteWhereInput
+    /**
+     * Limit how many CommentUpvotes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CommentUpvote without action
+   */
+  export type CommentUpvoteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentUpvote
+     */
+    select?: CommentUpvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentUpvote
+     */
+    omit?: CommentUpvoteOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CommentDownvote
+   */
+
+  export type AggregateCommentDownvote = {
+    _count: CommentDownvoteCountAggregateOutputType | null
+    _avg: CommentDownvoteAvgAggregateOutputType | null
+    _sum: CommentDownvoteSumAggregateOutputType | null
+    _min: CommentDownvoteMinAggregateOutputType | null
+    _max: CommentDownvoteMaxAggregateOutputType | null
+  }
+
+  export type CommentDownvoteAvgAggregateOutputType = {
+    id: number | null
+    commentId: number | null
+    userId: number | null
+  }
+
+  export type CommentDownvoteSumAggregateOutputType = {
+    id: number | null
+    commentId: number | null
+    userId: number | null
+  }
+
+  export type CommentDownvoteMinAggregateOutputType = {
+    id: number | null
+    commentId: number | null
+    userId: number | null
+  }
+
+  export type CommentDownvoteMaxAggregateOutputType = {
+    id: number | null
+    commentId: number | null
+    userId: number | null
+  }
+
+  export type CommentDownvoteCountAggregateOutputType = {
+    id: number
+    commentId: number
+    userId: number
+    _all: number
+  }
+
+
+  export type CommentDownvoteAvgAggregateInputType = {
+    id?: true
+    commentId?: true
+    userId?: true
+  }
+
+  export type CommentDownvoteSumAggregateInputType = {
+    id?: true
+    commentId?: true
+    userId?: true
+  }
+
+  export type CommentDownvoteMinAggregateInputType = {
+    id?: true
+    commentId?: true
+    userId?: true
+  }
+
+  export type CommentDownvoteMaxAggregateInputType = {
+    id?: true
+    commentId?: true
+    userId?: true
+  }
+
+  export type CommentDownvoteCountAggregateInputType = {
+    id?: true
+    commentId?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type CommentDownvoteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CommentDownvote to aggregate.
+     */
+    where?: CommentDownvoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommentDownvotes to fetch.
+     */
+    orderBy?: CommentDownvoteOrderByWithRelationInput | CommentDownvoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CommentDownvoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommentDownvotes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommentDownvotes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CommentDownvotes
+    **/
+    _count?: true | CommentDownvoteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CommentDownvoteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CommentDownvoteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CommentDownvoteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CommentDownvoteMaxAggregateInputType
+  }
+
+  export type GetCommentDownvoteAggregateType<T extends CommentDownvoteAggregateArgs> = {
+        [P in keyof T & keyof AggregateCommentDownvote]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCommentDownvote[P]>
+      : GetScalarType<T[P], AggregateCommentDownvote[P]>
+  }
+
+
+
+
+  export type CommentDownvoteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentDownvoteWhereInput
+    orderBy?: CommentDownvoteOrderByWithAggregationInput | CommentDownvoteOrderByWithAggregationInput[]
+    by: CommentDownvoteScalarFieldEnum[] | CommentDownvoteScalarFieldEnum
+    having?: CommentDownvoteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CommentDownvoteCountAggregateInputType | true
+    _avg?: CommentDownvoteAvgAggregateInputType
+    _sum?: CommentDownvoteSumAggregateInputType
+    _min?: CommentDownvoteMinAggregateInputType
+    _max?: CommentDownvoteMaxAggregateInputType
+  }
+
+  export type CommentDownvoteGroupByOutputType = {
+    id: number
+    commentId: number
+    userId: number
+    _count: CommentDownvoteCountAggregateOutputType | null
+    _avg: CommentDownvoteAvgAggregateOutputType | null
+    _sum: CommentDownvoteSumAggregateOutputType | null
+    _min: CommentDownvoteMinAggregateOutputType | null
+    _max: CommentDownvoteMaxAggregateOutputType | null
+  }
+
+  type GetCommentDownvoteGroupByPayload<T extends CommentDownvoteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CommentDownvoteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CommentDownvoteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CommentDownvoteGroupByOutputType[P]>
+            : GetScalarType<T[P], CommentDownvoteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CommentDownvoteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    commentId?: boolean
+    userId?: boolean
+  }, ExtArgs["result"]["commentDownvote"]>
+
+  export type CommentDownvoteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    commentId?: boolean
+    userId?: boolean
+  }, ExtArgs["result"]["commentDownvote"]>
+
+  export type CommentDownvoteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    commentId?: boolean
+    userId?: boolean
+  }, ExtArgs["result"]["commentDownvote"]>
+
+  export type CommentDownvoteSelectScalar = {
+    id?: boolean
+    commentId?: boolean
+    userId?: boolean
+  }
+
+  export type CommentDownvoteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "commentId" | "userId", ExtArgs["result"]["commentDownvote"]>
+
+  export type $CommentDownvotePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CommentDownvote"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      commentId: number
+      userId: number
+    }, ExtArgs["result"]["commentDownvote"]>
+    composites: {}
+  }
+
+  type CommentDownvoteGetPayload<S extends boolean | null | undefined | CommentDownvoteDefaultArgs> = $Result.GetResult<Prisma.$CommentDownvotePayload, S>
+
+  type CommentDownvoteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CommentDownvoteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CommentDownvoteCountAggregateInputType | true
+    }
+
+  export interface CommentDownvoteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CommentDownvote'], meta: { name: 'CommentDownvote' } }
+    /**
+     * Find zero or one CommentDownvote that matches the filter.
+     * @param {CommentDownvoteFindUniqueArgs} args - Arguments to find a CommentDownvote
+     * @example
+     * // Get one CommentDownvote
+     * const commentDownvote = await prisma.commentDownvote.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CommentDownvoteFindUniqueArgs>(args: SelectSubset<T, CommentDownvoteFindUniqueArgs<ExtArgs>>): Prisma__CommentDownvoteClient<$Result.GetResult<Prisma.$CommentDownvotePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CommentDownvote that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CommentDownvoteFindUniqueOrThrowArgs} args - Arguments to find a CommentDownvote
+     * @example
+     * // Get one CommentDownvote
+     * const commentDownvote = await prisma.commentDownvote.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CommentDownvoteFindUniqueOrThrowArgs>(args: SelectSubset<T, CommentDownvoteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CommentDownvoteClient<$Result.GetResult<Prisma.$CommentDownvotePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CommentDownvote that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentDownvoteFindFirstArgs} args - Arguments to find a CommentDownvote
+     * @example
+     * // Get one CommentDownvote
+     * const commentDownvote = await prisma.commentDownvote.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CommentDownvoteFindFirstArgs>(args?: SelectSubset<T, CommentDownvoteFindFirstArgs<ExtArgs>>): Prisma__CommentDownvoteClient<$Result.GetResult<Prisma.$CommentDownvotePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CommentDownvote that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentDownvoteFindFirstOrThrowArgs} args - Arguments to find a CommentDownvote
+     * @example
+     * // Get one CommentDownvote
+     * const commentDownvote = await prisma.commentDownvote.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CommentDownvoteFindFirstOrThrowArgs>(args?: SelectSubset<T, CommentDownvoteFindFirstOrThrowArgs<ExtArgs>>): Prisma__CommentDownvoteClient<$Result.GetResult<Prisma.$CommentDownvotePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CommentDownvotes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentDownvoteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CommentDownvotes
+     * const commentDownvotes = await prisma.commentDownvote.findMany()
+     * 
+     * // Get first 10 CommentDownvotes
+     * const commentDownvotes = await prisma.commentDownvote.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const commentDownvoteWithIdOnly = await prisma.commentDownvote.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CommentDownvoteFindManyArgs>(args?: SelectSubset<T, CommentDownvoteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentDownvotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CommentDownvote.
+     * @param {CommentDownvoteCreateArgs} args - Arguments to create a CommentDownvote.
+     * @example
+     * // Create one CommentDownvote
+     * const CommentDownvote = await prisma.commentDownvote.create({
+     *   data: {
+     *     // ... data to create a CommentDownvote
+     *   }
+     * })
+     * 
+     */
+    create<T extends CommentDownvoteCreateArgs>(args: SelectSubset<T, CommentDownvoteCreateArgs<ExtArgs>>): Prisma__CommentDownvoteClient<$Result.GetResult<Prisma.$CommentDownvotePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CommentDownvotes.
+     * @param {CommentDownvoteCreateManyArgs} args - Arguments to create many CommentDownvotes.
+     * @example
+     * // Create many CommentDownvotes
+     * const commentDownvote = await prisma.commentDownvote.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CommentDownvoteCreateManyArgs>(args?: SelectSubset<T, CommentDownvoteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CommentDownvotes and returns the data saved in the database.
+     * @param {CommentDownvoteCreateManyAndReturnArgs} args - Arguments to create many CommentDownvotes.
+     * @example
+     * // Create many CommentDownvotes
+     * const commentDownvote = await prisma.commentDownvote.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CommentDownvotes and only return the `id`
+     * const commentDownvoteWithIdOnly = await prisma.commentDownvote.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CommentDownvoteCreateManyAndReturnArgs>(args?: SelectSubset<T, CommentDownvoteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentDownvotePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CommentDownvote.
+     * @param {CommentDownvoteDeleteArgs} args - Arguments to delete one CommentDownvote.
+     * @example
+     * // Delete one CommentDownvote
+     * const CommentDownvote = await prisma.commentDownvote.delete({
+     *   where: {
+     *     // ... filter to delete one CommentDownvote
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CommentDownvoteDeleteArgs>(args: SelectSubset<T, CommentDownvoteDeleteArgs<ExtArgs>>): Prisma__CommentDownvoteClient<$Result.GetResult<Prisma.$CommentDownvotePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CommentDownvote.
+     * @param {CommentDownvoteUpdateArgs} args - Arguments to update one CommentDownvote.
+     * @example
+     * // Update one CommentDownvote
+     * const commentDownvote = await prisma.commentDownvote.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CommentDownvoteUpdateArgs>(args: SelectSubset<T, CommentDownvoteUpdateArgs<ExtArgs>>): Prisma__CommentDownvoteClient<$Result.GetResult<Prisma.$CommentDownvotePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CommentDownvotes.
+     * @param {CommentDownvoteDeleteManyArgs} args - Arguments to filter CommentDownvotes to delete.
+     * @example
+     * // Delete a few CommentDownvotes
+     * const { count } = await prisma.commentDownvote.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CommentDownvoteDeleteManyArgs>(args?: SelectSubset<T, CommentDownvoteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CommentDownvotes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentDownvoteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CommentDownvotes
+     * const commentDownvote = await prisma.commentDownvote.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CommentDownvoteUpdateManyArgs>(args: SelectSubset<T, CommentDownvoteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CommentDownvotes and returns the data updated in the database.
+     * @param {CommentDownvoteUpdateManyAndReturnArgs} args - Arguments to update many CommentDownvotes.
+     * @example
+     * // Update many CommentDownvotes
+     * const commentDownvote = await prisma.commentDownvote.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CommentDownvotes and only return the `id`
+     * const commentDownvoteWithIdOnly = await prisma.commentDownvote.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CommentDownvoteUpdateManyAndReturnArgs>(args: SelectSubset<T, CommentDownvoteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentDownvotePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CommentDownvote.
+     * @param {CommentDownvoteUpsertArgs} args - Arguments to update or create a CommentDownvote.
+     * @example
+     * // Update or create a CommentDownvote
+     * const commentDownvote = await prisma.commentDownvote.upsert({
+     *   create: {
+     *     // ... data to create a CommentDownvote
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CommentDownvote we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CommentDownvoteUpsertArgs>(args: SelectSubset<T, CommentDownvoteUpsertArgs<ExtArgs>>): Prisma__CommentDownvoteClient<$Result.GetResult<Prisma.$CommentDownvotePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CommentDownvotes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentDownvoteCountArgs} args - Arguments to filter CommentDownvotes to count.
+     * @example
+     * // Count the number of CommentDownvotes
+     * const count = await prisma.commentDownvote.count({
+     *   where: {
+     *     // ... the filter for the CommentDownvotes we want to count
+     *   }
+     * })
+    **/
+    count<T extends CommentDownvoteCountArgs>(
+      args?: Subset<T, CommentDownvoteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CommentDownvoteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CommentDownvote.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentDownvoteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CommentDownvoteAggregateArgs>(args: Subset<T, CommentDownvoteAggregateArgs>): Prisma.PrismaPromise<GetCommentDownvoteAggregateType<T>>
+
+    /**
+     * Group by CommentDownvote.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentDownvoteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CommentDownvoteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CommentDownvoteGroupByArgs['orderBy'] }
+        : { orderBy?: CommentDownvoteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CommentDownvoteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommentDownvoteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CommentDownvote model
+   */
+  readonly fields: CommentDownvoteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CommentDownvote.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CommentDownvoteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CommentDownvote model
+   */
+  interface CommentDownvoteFieldRefs {
+    readonly id: FieldRef<"CommentDownvote", 'Int'>
+    readonly commentId: FieldRef<"CommentDownvote", 'Int'>
+    readonly userId: FieldRef<"CommentDownvote", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CommentDownvote findUnique
+   */
+  export type CommentDownvoteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentDownvote
+     */
+    select?: CommentDownvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentDownvote
+     */
+    omit?: CommentDownvoteOmit<ExtArgs> | null
+    /**
+     * Filter, which CommentDownvote to fetch.
+     */
+    where: CommentDownvoteWhereUniqueInput
+  }
+
+  /**
+   * CommentDownvote findUniqueOrThrow
+   */
+  export type CommentDownvoteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentDownvote
+     */
+    select?: CommentDownvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentDownvote
+     */
+    omit?: CommentDownvoteOmit<ExtArgs> | null
+    /**
+     * Filter, which CommentDownvote to fetch.
+     */
+    where: CommentDownvoteWhereUniqueInput
+  }
+
+  /**
+   * CommentDownvote findFirst
+   */
+  export type CommentDownvoteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentDownvote
+     */
+    select?: CommentDownvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentDownvote
+     */
+    omit?: CommentDownvoteOmit<ExtArgs> | null
+    /**
+     * Filter, which CommentDownvote to fetch.
+     */
+    where?: CommentDownvoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommentDownvotes to fetch.
+     */
+    orderBy?: CommentDownvoteOrderByWithRelationInput | CommentDownvoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CommentDownvotes.
+     */
+    cursor?: CommentDownvoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommentDownvotes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommentDownvotes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CommentDownvotes.
+     */
+    distinct?: CommentDownvoteScalarFieldEnum | CommentDownvoteScalarFieldEnum[]
+  }
+
+  /**
+   * CommentDownvote findFirstOrThrow
+   */
+  export type CommentDownvoteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentDownvote
+     */
+    select?: CommentDownvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentDownvote
+     */
+    omit?: CommentDownvoteOmit<ExtArgs> | null
+    /**
+     * Filter, which CommentDownvote to fetch.
+     */
+    where?: CommentDownvoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommentDownvotes to fetch.
+     */
+    orderBy?: CommentDownvoteOrderByWithRelationInput | CommentDownvoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CommentDownvotes.
+     */
+    cursor?: CommentDownvoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommentDownvotes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommentDownvotes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CommentDownvotes.
+     */
+    distinct?: CommentDownvoteScalarFieldEnum | CommentDownvoteScalarFieldEnum[]
+  }
+
+  /**
+   * CommentDownvote findMany
+   */
+  export type CommentDownvoteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentDownvote
+     */
+    select?: CommentDownvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentDownvote
+     */
+    omit?: CommentDownvoteOmit<ExtArgs> | null
+    /**
+     * Filter, which CommentDownvotes to fetch.
+     */
+    where?: CommentDownvoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CommentDownvotes to fetch.
+     */
+    orderBy?: CommentDownvoteOrderByWithRelationInput | CommentDownvoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CommentDownvotes.
+     */
+    cursor?: CommentDownvoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CommentDownvotes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CommentDownvotes.
+     */
+    skip?: number
+    distinct?: CommentDownvoteScalarFieldEnum | CommentDownvoteScalarFieldEnum[]
+  }
+
+  /**
+   * CommentDownvote create
+   */
+  export type CommentDownvoteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentDownvote
+     */
+    select?: CommentDownvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentDownvote
+     */
+    omit?: CommentDownvoteOmit<ExtArgs> | null
+    /**
+     * The data needed to create a CommentDownvote.
+     */
+    data: XOR<CommentDownvoteCreateInput, CommentDownvoteUncheckedCreateInput>
+  }
+
+  /**
+   * CommentDownvote createMany
+   */
+  export type CommentDownvoteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CommentDownvotes.
+     */
+    data: CommentDownvoteCreateManyInput | CommentDownvoteCreateManyInput[]
+  }
+
+  /**
+   * CommentDownvote createManyAndReturn
+   */
+  export type CommentDownvoteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentDownvote
+     */
+    select?: CommentDownvoteSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentDownvote
+     */
+    omit?: CommentDownvoteOmit<ExtArgs> | null
+    /**
+     * The data used to create many CommentDownvotes.
+     */
+    data: CommentDownvoteCreateManyInput | CommentDownvoteCreateManyInput[]
+  }
+
+  /**
+   * CommentDownvote update
+   */
+  export type CommentDownvoteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentDownvote
+     */
+    select?: CommentDownvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentDownvote
+     */
+    omit?: CommentDownvoteOmit<ExtArgs> | null
+    /**
+     * The data needed to update a CommentDownvote.
+     */
+    data: XOR<CommentDownvoteUpdateInput, CommentDownvoteUncheckedUpdateInput>
+    /**
+     * Choose, which CommentDownvote to update.
+     */
+    where: CommentDownvoteWhereUniqueInput
+  }
+
+  /**
+   * CommentDownvote updateMany
+   */
+  export type CommentDownvoteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CommentDownvotes.
+     */
+    data: XOR<CommentDownvoteUpdateManyMutationInput, CommentDownvoteUncheckedUpdateManyInput>
+    /**
+     * Filter which CommentDownvotes to update
+     */
+    where?: CommentDownvoteWhereInput
+    /**
+     * Limit how many CommentDownvotes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CommentDownvote updateManyAndReturn
+   */
+  export type CommentDownvoteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentDownvote
+     */
+    select?: CommentDownvoteSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentDownvote
+     */
+    omit?: CommentDownvoteOmit<ExtArgs> | null
+    /**
+     * The data used to update CommentDownvotes.
+     */
+    data: XOR<CommentDownvoteUpdateManyMutationInput, CommentDownvoteUncheckedUpdateManyInput>
+    /**
+     * Filter which CommentDownvotes to update
+     */
+    where?: CommentDownvoteWhereInput
+    /**
+     * Limit how many CommentDownvotes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CommentDownvote upsert
+   */
+  export type CommentDownvoteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentDownvote
+     */
+    select?: CommentDownvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentDownvote
+     */
+    omit?: CommentDownvoteOmit<ExtArgs> | null
+    /**
+     * The filter to search for the CommentDownvote to update in case it exists.
+     */
+    where: CommentDownvoteWhereUniqueInput
+    /**
+     * In case the CommentDownvote found by the `where` argument doesn't exist, create a new CommentDownvote with this data.
+     */
+    create: XOR<CommentDownvoteCreateInput, CommentDownvoteUncheckedCreateInput>
+    /**
+     * In case the CommentDownvote was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CommentDownvoteUpdateInput, CommentDownvoteUncheckedUpdateInput>
+  }
+
+  /**
+   * CommentDownvote delete
+   */
+  export type CommentDownvoteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentDownvote
+     */
+    select?: CommentDownvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentDownvote
+     */
+    omit?: CommentDownvoteOmit<ExtArgs> | null
+    /**
+     * Filter which CommentDownvote to delete.
+     */
+    where: CommentDownvoteWhereUniqueInput
+  }
+
+  /**
+   * CommentDownvote deleteMany
+   */
+  export type CommentDownvoteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CommentDownvotes to delete
+     */
+    where?: CommentDownvoteWhereInput
+    /**
+     * Limit how many CommentDownvotes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CommentDownvote without action
+   */
+  export type CommentDownvoteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CommentDownvote
+     */
+    select?: CommentDownvoteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CommentDownvote
+     */
+    omit?: CommentDownvoteOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6810,6 +9010,24 @@ export namespace Prisma {
   };
 
   export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
+
+
+  export const CommentUpvoteScalarFieldEnum: {
+    id: 'id',
+    commentId: 'commentId',
+    userId: 'userId'
+  };
+
+  export type CommentUpvoteScalarFieldEnum = (typeof CommentUpvoteScalarFieldEnum)[keyof typeof CommentUpvoteScalarFieldEnum]
+
+
+  export const CommentDownvoteScalarFieldEnum: {
+    id: 'id',
+    commentId: 'commentId',
+    userId: 'userId'
+  };
+
+  export type CommentDownvoteScalarFieldEnum = (typeof CommentDownvoteScalarFieldEnum)[keyof typeof CommentDownvoteScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7138,6 +9356,96 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Comment"> | Date | string
   }
 
+  export type CommentUpvoteWhereInput = {
+    AND?: CommentUpvoteWhereInput | CommentUpvoteWhereInput[]
+    OR?: CommentUpvoteWhereInput[]
+    NOT?: CommentUpvoteWhereInput | CommentUpvoteWhereInput[]
+    id?: IntFilter<"CommentUpvote"> | number
+    commentId?: IntFilter<"CommentUpvote"> | number
+    userId?: IntFilter<"CommentUpvote"> | number
+  }
+
+  export type CommentUpvoteOrderByWithRelationInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CommentUpvoteWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    commentId_userId?: CommentUpvoteCommentIdUserIdCompoundUniqueInput
+    AND?: CommentUpvoteWhereInput | CommentUpvoteWhereInput[]
+    OR?: CommentUpvoteWhereInput[]
+    NOT?: CommentUpvoteWhereInput | CommentUpvoteWhereInput[]
+    commentId?: IntFilter<"CommentUpvote"> | number
+    userId?: IntFilter<"CommentUpvote"> | number
+  }, "id" | "commentId_userId">
+
+  export type CommentUpvoteOrderByWithAggregationInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+    _count?: CommentUpvoteCountOrderByAggregateInput
+    _avg?: CommentUpvoteAvgOrderByAggregateInput
+    _max?: CommentUpvoteMaxOrderByAggregateInput
+    _min?: CommentUpvoteMinOrderByAggregateInput
+    _sum?: CommentUpvoteSumOrderByAggregateInput
+  }
+
+  export type CommentUpvoteScalarWhereWithAggregatesInput = {
+    AND?: CommentUpvoteScalarWhereWithAggregatesInput | CommentUpvoteScalarWhereWithAggregatesInput[]
+    OR?: CommentUpvoteScalarWhereWithAggregatesInput[]
+    NOT?: CommentUpvoteScalarWhereWithAggregatesInput | CommentUpvoteScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"CommentUpvote"> | number
+    commentId?: IntWithAggregatesFilter<"CommentUpvote"> | number
+    userId?: IntWithAggregatesFilter<"CommentUpvote"> | number
+  }
+
+  export type CommentDownvoteWhereInput = {
+    AND?: CommentDownvoteWhereInput | CommentDownvoteWhereInput[]
+    OR?: CommentDownvoteWhereInput[]
+    NOT?: CommentDownvoteWhereInput | CommentDownvoteWhereInput[]
+    id?: IntFilter<"CommentDownvote"> | number
+    commentId?: IntFilter<"CommentDownvote"> | number
+    userId?: IntFilter<"CommentDownvote"> | number
+  }
+
+  export type CommentDownvoteOrderByWithRelationInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CommentDownvoteWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    commentId_userId?: CommentDownvoteCommentIdUserIdCompoundUniqueInput
+    AND?: CommentDownvoteWhereInput | CommentDownvoteWhereInput[]
+    OR?: CommentDownvoteWhereInput[]
+    NOT?: CommentDownvoteWhereInput | CommentDownvoteWhereInput[]
+    commentId?: IntFilter<"CommentDownvote"> | number
+    userId?: IntFilter<"CommentDownvote"> | number
+  }, "id" | "commentId_userId">
+
+  export type CommentDownvoteOrderByWithAggregationInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+    _count?: CommentDownvoteCountOrderByAggregateInput
+    _avg?: CommentDownvoteAvgOrderByAggregateInput
+    _max?: CommentDownvoteMaxOrderByAggregateInput
+    _min?: CommentDownvoteMinOrderByAggregateInput
+    _sum?: CommentDownvoteSumOrderByAggregateInput
+  }
+
+  export type CommentDownvoteScalarWhereWithAggregatesInput = {
+    AND?: CommentDownvoteScalarWhereWithAggregatesInput | CommentDownvoteScalarWhereWithAggregatesInput[]
+    OR?: CommentDownvoteScalarWhereWithAggregatesInput[]
+    NOT?: CommentDownvoteScalarWhereWithAggregatesInput | CommentDownvoteScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"CommentDownvote"> | number
+    commentId?: IntWithAggregatesFilter<"CommentDownvote"> | number
+    userId?: IntWithAggregatesFilter<"CommentDownvote"> | number
+  }
+
   export type UserCreateInput = {
     name?: string | null
     email: string
@@ -7389,6 +9697,84 @@ export namespace Prisma {
     downvotes?: IntFieldUpdateOperationsInput | number
     blogId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentUpvoteCreateInput = {
+    commentId: number
+    userId: number
+  }
+
+  export type CommentUpvoteUncheckedCreateInput = {
+    id?: number
+    commentId: number
+    userId: number
+  }
+
+  export type CommentUpvoteUpdateInput = {
+    commentId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CommentUpvoteUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    commentId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CommentUpvoteCreateManyInput = {
+    id?: number
+    commentId: number
+    userId: number
+  }
+
+  export type CommentUpvoteUpdateManyMutationInput = {
+    commentId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CommentUpvoteUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    commentId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CommentDownvoteCreateInput = {
+    commentId: number
+    userId: number
+  }
+
+  export type CommentDownvoteUncheckedCreateInput = {
+    id?: number
+    commentId: number
+    userId: number
+  }
+
+  export type CommentDownvoteUpdateInput = {
+    commentId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CommentDownvoteUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    commentId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CommentDownvoteCreateManyInput = {
+    id?: number
+    commentId: number
+    userId: number
+  }
+
+  export type CommentDownvoteUpdateManyMutationInput = {
+    commentId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CommentDownvoteUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    commentId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -7718,6 +10104,76 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type CommentUpvoteCommentIdUserIdCompoundUniqueInput = {
+    commentId: number
+    userId: number
+  }
+
+  export type CommentUpvoteCountOrderByAggregateInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CommentUpvoteAvgOrderByAggregateInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CommentUpvoteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CommentUpvoteMinOrderByAggregateInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CommentUpvoteSumOrderByAggregateInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CommentDownvoteCommentIdUserIdCompoundUniqueInput = {
+    commentId: number
+    userId: number
+  }
+
+  export type CommentDownvoteCountOrderByAggregateInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CommentDownvoteAvgOrderByAggregateInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CommentDownvoteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CommentDownvoteMinOrderByAggregateInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CommentDownvoteSumOrderByAggregateInput = {
+    id?: SortOrder
+    commentId?: SortOrder
+    userId?: SortOrder
   }
 
   export type BlogCreateNestedManyWithoutAuthorInput = {

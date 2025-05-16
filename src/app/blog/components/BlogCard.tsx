@@ -10,6 +10,7 @@ interface BlogCardProps {
   onToggleCommentSection: (blogId: number) => void;
   onAddComment: (blogId: number, content: string) => void;
   onVoteComment: (commentId: number, action: "upvote" | "downvote") => void;
+  isLoggedIn: boolean;
 }
 
 export default function BlogCard({
@@ -20,6 +21,7 @@ export default function BlogCard({
   onToggleCommentSection,
   onAddComment,
   onVoteComment,
+  isLoggedIn,
 }: BlogCardProps) {
   return (
     <div
@@ -37,6 +39,7 @@ export default function BlogCard({
         upvotes={blog.upvotes}
         upvoted={upvoted}
         onToggle={onToggleUpvote}
+        isLoggedIn={isLoggedIn}
       />
       <button onClick={() => onToggleCommentSection(blog.id)}>
         {expanded ? "Hide Comments" : "Show Comments"}
@@ -47,6 +50,7 @@ export default function BlogCard({
           comments={blog.comments}
           onAddComment={onAddComment}
           onVote={onVoteComment}
+          isLoggedIn={isLoggedIn}
         />
       )}
     </div>

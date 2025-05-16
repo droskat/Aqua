@@ -1,11 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import styles from "./NewBlog.module.css";
 
 export default function NewBlog() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  useEffect(() => {
+    if (status === "loading") return;
+    if (!session) {
+      router.replace("/blog");
+    }
+  }, [session, status, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,6 +43,10 @@ export default function NewBlog() {
       alert("An error occurred while creating the blog.");
     }
   };
+
+  if (!session) {
+    return null; // Optionally, show a loading spinner here
+  }
 
   return (
     <div className={styles.container}>

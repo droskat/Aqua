@@ -1,10 +1,12 @@
 import { Comment } from "../types";
+import toast from "react-hot-toast";
 
 interface CommentSectionProps {
   blogId: number;
   comments: Comment[];
   onAddComment: (blogId: number, content: string) => void;
   onVote: (commentId: number, action: "upvote" | "downvote") => void;
+  isLoggedIn: boolean;
 }
 
 export default function CommentSection({
@@ -12,7 +14,17 @@ export default function CommentSection({
   comments,
   onAddComment,
   onVote,
+  isLoggedIn,
 }: CommentSectionProps) {
+  // Handler for voting with auth check
+  const handleVote = (commentId: number, action: "upvote" | "downvote") => {
+    if (!isLoggedIn) {
+      toast.error("Sign in to vote.");
+      return;
+    }
+    onVote(commentId, action);
+  };
+
   return (
     <div style={{ marginTop: "16px" }}>
       <h3>Comments</h3>
@@ -25,21 +37,40 @@ export default function CommentSection({
             <p>
               Upvotes: {comment.upvotes} | Downvotes: {comment.downvotes}
             </p>
-            <button onClick={() => onVote(comment.id, "upvote")}>Upvote</button>
-            <button onClick={() => onVote(comment.id, "downvote")}>Downvote</button>
+            <button
+              onClick={() => handleVote(comment.id, "upvote")}
+            >
+              Upvote
+            </button>
+            <button
+              onClick={() => handleVote(comment.id, "downvote")}
+            >
+              Downvote
+            </button>
           </div>
         ))
       )}
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          if (!isLoggedIn) {
+            toast.error("Sign in to comment.");
+            return;
+          }
           const content = (e.target as any).elements.content.value;
           onAddComment(blogId, content);
           (e.target as any).reset();
         }}
       >
-        <input type="text" name="content" placeholder="Add a comment" required />
-        <button type="submit">Submit</button>
+        <input
+          type="text"
+          name="content"
+          placeholder="Add a comment"
+          required
+        />
+        <button type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useSession, signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import styles from "./Gallery.module.css";
+import toast from "react-hot-toast";
 
 type Image = {
   id: number;
@@ -11,6 +13,8 @@ type Image = {
 
 export default function Gallery() {
   const [images, setImages] = useState<Image[]>([]);
+  const { data: session } = useSession();
+  const router = useRouter();
 
   // Fetch images from the API
   useEffect(() => {
@@ -32,6 +36,15 @@ export default function Gallery() {
     fetchImages();
   }, []);
 
+  const handleUploadClick = (e: React.MouseEvent) => {
+    if (!session) {
+      toast.error("Sign in to upload images.");
+      signIn();
+    } else {
+      router.push("/gallery/upload");
+    }
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Gallery</h1>
@@ -39,10 +52,12 @@ export default function Gallery() {
         Check out our amazing collection of images and upload your own!
       </p>
 
-      {/* Link to Upload Page */}
-      <Link href="/gallery/upload">
-        <button className={styles.uploadButton}>Uppload your scape</button>
-      </Link>
+      <button
+        className={styles.uploadButton}
+        onClick={handleUploadClick}
+      >
+        Upload your scape
+      </button>
 
       {/* Gallery Grid */}
       <div
