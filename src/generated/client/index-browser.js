@@ -20,11 +20,11 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.8.1
+ * Prisma Client JS version: 6.8.2
  * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
  */
 Prisma.prismaVersion = {
-  client: "6.8.1",
+  client: "6.8.2",
   engine: "2060c79ba17c6bb9f5823312b6f6b7f4a845738e"
 }
 
@@ -136,7 +136,9 @@ exports.Prisma.BlogScalarFieldEnum = {
 
 exports.Prisma.ImageScalarFieldEnum = {
   id: 'id',
-  url: 'url'
+  url: 'url',
+  title: 'title',
+  author: 'author'
 };
 
 exports.Prisma.UpvoteScalarFieldEnum = {
@@ -166,6 +168,55 @@ exports.Prisma.CommentDownvoteScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.ForumThreadScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  authorId: 'authorId',
+  createdAt: 'createdAt',
+  upvotes: 'upvotes',
+  downvotes: 'downvotes'
+};
+
+exports.Prisma.ForumCommentScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  authorId: 'authorId',
+  threadId: 'threadId',
+  parentId: 'parentId',
+  createdAt: 'createdAt',
+  upvotes: 'upvotes',
+  downvotes: 'downvotes'
+};
+
+exports.Prisma.ForumThreadUpvoteScalarFieldEnum = {
+  id: 'id',
+  threadId: 'threadId',
+  userId: 'userId',
+  forumThreadId: 'forumThreadId'
+};
+
+exports.Prisma.ForumThreadDownvoteScalarFieldEnum = {
+  id: 'id',
+  threadId: 'threadId',
+  userId: 'userId',
+  forumThreadId: 'forumThreadId'
+};
+
+exports.Prisma.ForumCommentUpvoteScalarFieldEnum = {
+  id: 'id',
+  commentId: 'commentId',
+  userId: 'userId',
+  forumCommentId: 'forumCommentId'
+};
+
+exports.Prisma.ForumCommentDownvoteScalarFieldEnum = {
+  id: 'id',
+  commentId: 'commentId',
+  userId: 'userId',
+  forumCommentId: 'forumCommentId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -184,7 +235,13 @@ exports.Prisma.ModelName = {
   Upvote: 'Upvote',
   Comment: 'Comment',
   CommentUpvote: 'CommentUpvote',
-  CommentDownvote: 'CommentDownvote'
+  CommentDownvote: 'CommentDownvote',
+  ForumThread: 'ForumThread',
+  ForumComment: 'ForumComment',
+  ForumThreadUpvote: 'ForumThreadUpvote',
+  ForumThreadDownvote: 'ForumThreadDownvote',
+  ForumCommentUpvote: 'ForumCommentUpvote',
+  ForumCommentDownvote: 'ForumCommentDownvote'
 };
 
 /**

@@ -166,3 +166,84 @@ a.secondary {
     filter: invert();
   }
 }
+
+.heading {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+.featuredScapeSection {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #e3f2fd;
+  border-radius: 8px;
+}
+
+.featuredScapeCard {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px #eee;
+  display: flex;
+      flex-direction: row-reverse;
+    justify-content: center;
+     background: linear-gradient(354deg, #213e61, #203a43, #295935);
+         color: #d3cfc7;
+}
+
+.featuredScapeImage {
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  max-height: 400px;
+
+}
+.imageMeta {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-right: 100px
+}
+
+.featuredScapeTitle {
+  margin: 0.5rem 0 0 0;
+  font-size:2.5em;
+}
+
+.featuredScapeAuthor {
+  margin: 0.5rem 0 0 0;
+  color: #b99e69;
+}
+
+.topBlogSection {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f5f7fa;
+  border-radius: 8px;
+}
+
+.topBlogCard {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px #eee;
+  cursor: pointer;
+}
+
+.topBlogTitle {
+  margin: 0;
+}
+
+.topBlogUpvotes {
+  color: #4caf50;
+  font-weight: bold;
+}

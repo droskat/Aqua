@@ -20,6 +20,7 @@ export default function Header() {
         <a className={`${styles.navClass}`} href="/about">About Us</a>
         <a className={`${styles.navClass}`} href="/gallery">Gallery</a>
         <a className={`${styles.navClass}`} href="/blog">Blog</a>
+        <a className={`${styles.navClass}`} href="/forums">Forums</a>
       </nav>
       <button
         className={styles.menuButton}

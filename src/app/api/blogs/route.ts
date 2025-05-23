@@ -13,14 +13,25 @@ if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
 
 export async function GET(req: Request) {
   try {
-const url = new URL(req.url);
-const page = parseInt(url.searchParams.get("page") || "1");
-const limit = parseInt(url.searchParams.get("limit") || "10");
-const skip = (page - 1) * limit;
+    const url = new URL(req.url);
+    const page = parseInt(url.searchParams.get("page") || "1");
+    const limit = parseInt(url.searchParams.get("limit") || "10");
+    const skip = (page - 1) * limit;
+    const sort = url.searchParams.get("sort");
+
+    let orderBy: any = undefined;
+    if (sort === "upvotes_desc") {
+      orderBy = { upvotes: "desc" };
+    } else if (sort === "upvotes_asc") {
+      orderBy = { upvotes: "asc" };
+    }
+
     const blogs = await prisma.blog.findMany({
-  skip,
-  take: limit,
-});
+      skip,
+      take: limit,
+      ...(orderBy ? { orderBy } : {}),
+    });
+
     return NextResponse.json(blogs);
   } catch (error) {
     console.error("Error fetching blogs:", error);

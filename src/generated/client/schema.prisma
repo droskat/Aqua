@@ -9,13 +9,15 @@ datasource db {
 }
 
 model User {
-  id                Int     @id @default(autoincrement())
+  id                Int            @id @default(autoincrement())
   name              String?
-  email             String  @unique
+  email             String         @unique
   password          String
   blogs             Blog[]
   provider          String?
   providerAccountId String?
+  ForumThread       ForumThread[]
+  ForumComment      ForumComment[]
 }
 
 model Blog {
@@ -30,8 +32,10 @@ model Blog {
 }
 
 model Image {
-  id  Int    @id @default(autoincrement())
-  url String
+  id     Int    @id @default(autoincrement())
+  url    String
+  title  String @default("anonymous")
+  author String @default("anonymous")
 }
 
 model Upvote {
@@ -65,6 +69,77 @@ model CommentDownvote {
   id        Int @id @default(autoincrement())
   commentId Int
   userId    Int
+
+  @@unique([commentId, userId])
+}
+
+model ForumThread {
+  id                Int                   @id @default(autoincrement())
+  title             String
+  content           String
+  author            User                  @relation(fields: [authorId], references: [id])
+  authorId          Int
+  createdAt         DateTime              @default(now())
+  comments          ForumComment[]
+  upvotes           Int                   @default(0)
+  downvotes         Int                   @default(0)
+  upvotesRelation   ForumThreadUpvote[]
+  downvotesRelation ForumThreadDownvote[]
+}
+
+model ForumComment {
+  id                Int                    @id @default(autoincrement())
+  content           String
+  author            User                   @relation(fields: [authorId], references: [id])
+  authorId          Int
+  thread            ForumThread            @relation(fields: [threadId], references: [id])
+  threadId          Int
+  parentId          Int? // <-- Add this line
+  parent            ForumComment?          @relation("CommentReplies", fields: [parentId], references: [id])
+  replies           ForumComment[]         @relation("CommentReplies")
+  createdAt         DateTime               @default(now())
+  upvotes           Int                    @default(0)
+  downvotes         Int                    @default(0)
+  upvotesRelation   ForumCommentUpvote[]
+  downvotesRelation ForumCommentDownvote[]
+}
+
+model ForumThreadUpvote {
+  id            Int          @id @default(autoincrement())
+  threadId      Int
+  userId        Int
+  ForumThread   ForumThread? @relation(fields: [forumThreadId], references: [id])
+  forumThreadId Int?
+
+  @@unique([threadId, userId])
+}
+
+model ForumThreadDownvote {
+  id            Int          @id @default(autoincrement())
+  threadId      Int
+  userId        Int
+  ForumThread   ForumThread? @relation(fields: [forumThreadId], references: [id])
+  forumThreadId Int?
+
+  @@unique([threadId, userId])
+}
+
+model ForumCommentUpvote {
+  id             Int           @id @default(autoincrement())
+  commentId      Int
+  userId         Int
+  ForumComment   ForumComment? @relation(fields: [forumCommentId], references: [id])
+  forumCommentId Int?
+
+  @@unique([commentId, userId])
+}
+
+model ForumCommentDownvote {
+  id             Int           @id @default(autoincrement())
+  commentId      Int
+  userId         Int
+  ForumComment   ForumComment? @relation(fields: [forumCommentId], references: [id])
+  forumCommentId Int?
 
   @@unique([commentId, userId])
 }
