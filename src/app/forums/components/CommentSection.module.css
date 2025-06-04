@@ -4,7 +4,7 @@
   border-radius: 8px;
   background: #e3e3e3;
   border: 1px solid #cfcfcf;
-     box-shadow: 0px 4px 11px 0px #1D1D1D30;
+  box-shadow: 0px 4px 11px 0px #1D1D1D30;
   position: relative;
 }
 
@@ -12,6 +12,29 @@
   margin-left: 2rem;
   border-left: 2px solid #b3c6e0;
   padding-left: 1rem;
+  list-style-type: none;
+}
+
+.replySideline {
+  border-left: 2px solid #b3c6e0;
+  height: 46px;
+  width: calc(5% + 0.5px);
+  border-bottom-left-radius: 15px;
+  border-bottom: 2px solid #b3c6e0;
+  margin-right: 15px;
+}
+
+.sidelineArrow {
+  display: flex;
+  margin-right: 0px;
+  margin-left: calc(101%);
+  justify-content: flex-end;
+  /* margin-bottom: -5px; */
+  bottom: auto;
+  height: 60px;
+  ;
+  flex-direction: column;
+  color: #b3c6e0;
 }
 
 .commentActions {
@@ -19,6 +42,17 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-direction: row;
+  justify-content: flex-start;
+
+}
+
+.commentActionsoffSet {
+  margin-left: calc(-5% - 44px);
+}
+
+.commentActionsLegSet {
+  margin-left: 50px;
 }
 
 .replyForm {
@@ -40,11 +74,17 @@
 
 .commentMeta {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  padding-bottom: 30px;
 }
 
 .replyCount {
   margin-right: 1rem;
+  height: 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+  align-items: flex-end;
 }
 
 .voteButton {
@@ -52,12 +92,16 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
 }
 
 .voteIcon {
   width: 16px;
   height: 16px;
   fill: #123;
+  margin-right: 10px;
 }
 
 .upvoted {
@@ -70,9 +114,18 @@
 
 .replyButton {
   /* Add your reply button styles here */
+  display: flex;
+  border: none;
+  background-color: #e3e3e3;
+}
+
+.replyIcon {
+  width: 16px;
+  height: 16px;
+  fill: #123;
+  margin-right: 10px;
 }
 
 .replySubmitButton {
   /* Add your submit button styles here */
 }
-

@@ -15,7 +15,13 @@ export async function GET(req: Request) {
   const threads = await prisma.forumThread.findMany({
     orderBy: { createdAt: sort === "latest" ? "desc" : "asc" },
     take: limit,
-    select: { id: true, title: true, upvotes: true, createdAt: true },
+    select: {
+      id: true,
+      title: true,
+      upvotes: true,
+      createdAt: true,
+      author: { select: { id: true, name: true } }, // Add this line
+    },
   });
   return NextResponse.json(threads);
 }

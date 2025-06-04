@@ -112,22 +112,29 @@ export default function CommentItem({ comment, threadId, setComments }: {
 
   return (
     <li className={styles.commentItem}>
+      
       <div
-        className={styles.commentContainer}
         onClick={() => replyCount > 0 && setRepliesOpen(open => !open)}
         className={`${styles.commentContainer} ${replyCount > 0 ? styles.commentContainerPointer : ""}`}
       >
         <div>
           {comment.content}
           <div className={styles.commentMeta}>
+
+            {!repliesOpen && replyCount > 0 &&<div className={`${replyCount > 0 ? styles.replySideline : ""}`}>
+
+              <span className={ styles.sidelineArrow}>&gt;</span>
+            </div>
+}
             {/* Reply count first */}
-            {replyCount > 0 && (
+            {replyCount > 0 && !repliesOpen  && (
               <span className={styles.replyCount}>
                 {replyCount} {replyCount === 1 ? "reply" : "replies"}
               </span>
             )}
+            
             {/* Voting and reply actions */}
-            <div className={styles.commentActions}>
+            <div className={`${styles.commentActions} ${!repliesOpen && replyCount > 0? styles.commentActionsoffSet : styles.commentActionsLegSet}`}>
               <button
                 onClick={e => { e.stopPropagation(); handleUpvote(); }}
                 title="Upvote"
@@ -158,7 +165,10 @@ export default function CommentItem({ comment, threadId, setComments }: {
                 onClick={e => { e.stopPropagation(); setShowReply(r => !r); }}
                 className={styles.replyButton}
               >
-                Reply
+                
+<svg xmlns="http://www.w3.org/2000/svg" className={`${styles.replyIcon}`} viewBox="0 0 16 16">
+  <path d="M5.921 11.9 1.353 8.62a.72.72 0 0 1 0-1.238L5.921 4.1A.716.716 0 0 1 7 4.719V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z"/>
+</svg> reply
               </button>
             </div>
           </div>

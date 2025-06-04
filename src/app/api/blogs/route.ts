@@ -30,6 +30,7 @@ export async function GET(req: Request) {
       skip,
       take: limit,
       ...(orderBy ? { orderBy } : {}),
+      include: { author: { select: { id: true, name: true } } }, // Add this line
     });
 
     return NextResponse.json(blogs);
